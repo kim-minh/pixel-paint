@@ -7,6 +7,9 @@ function createGrid(size) {
         //Create new cell
         const cell = document.createElement('div');
         cell.classList.add('cell');
+        cell.addEventListener('mouseover', () => {
+            cell.style.backgroundColor = 'black';
+        });
         container.appendChild(cell);
     }
     container.style.setProperty('--size', size); //Set custom property for css
@@ -18,8 +21,7 @@ createGrid(16);
 //Add event for customize button
 sizeButton.addEventListener('click', () => {
     const size = prompt('Choose grid size', getComputedStyle(container).getPropertyValue('--size'));
-    if(size != undefined) {
-        container.replaceChildren();
-        createGrid(size);
-    }
+    if(size == undefined) return;
+    container.replaceChildren();
+    createGrid(size);
 });

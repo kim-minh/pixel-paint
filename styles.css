@@ -22,3 +22,7 @@ button.size {
     border: 1px solid black;
     margin: -1px;
 }
+
+.cell:hover {
+    background-color: rgba(154, 154, 166, 0.2);
+}
