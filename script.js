@@ -1,16 +1,28 @@
 const container = document.querySelector('.container');
 const sizeButton = document.querySelector('.size');
 
+let clicked = false;
+//Handle mouse drag event
+function dragEvent(cell) {
+    cell.addEventListener('mousedown', () => {
+        clicked = true;
+        cell.style.backgroundColor = 'black';
+    });
+    cell.addEventListener('mouseover', () => {
+        if(!clicked) return;
+        cell.style.backgroundColor = 'black';
+    });
+    cell.addEventListener('mouseup', () => clicked = false);
+}
+
 //Create a grid of n x n
 function createGrid(size) {
     for(let i = 0; i < size * size; ++i) {
         //Create new cell
         const cell = document.createElement('div');
         cell.classList.add('cell');
-        cell.addEventListener('mouseover', () => {
-            cell.style.backgroundColor = 'black';
-        });
         container.appendChild(cell);
+        dragEvent(cell);
     }
     container.style.setProperty('--size', size); //Set custom property for css
 }
